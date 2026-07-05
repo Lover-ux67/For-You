@@ -183,26 +183,30 @@
             100% { transform: translate(-50%, -140%) scale(1.05); }
         }
 
+        /* Фиксированные всплывашки: ТЕПЕРЬ СТРОГО ПО ЦЕНТРУ КАРТОЧКИ СЕРДЦА */
         .tooltip {
             position: absolute;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #fcb69f;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: rgba(255, 255, 255, 0.98);
+            border: 2px solid #fcb69f;
+            padding: 20px;
+            border-radius: 22px;
+            font-size: 0.95rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
             pointer-events: none;
             opacity: 0;
-            transform: translate(-50%, -110%) scale(0.9);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: #5d4f4c;
-            width: 250px;
-            z-index: 20;
-            line-height: 1.4;
+            width: 85%; /* Адаптивная ширина под любой телефон */
+            max-width: 320px;
+            z-index: 30;
+            line-height: 1.5;
             text-align: left;
         }
 
-        .tooltip.active { opacity: 1; transform: translate(-50%, -120%) scale(1); }
+        .tooltip.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
         #final-btn {
             position: absolute;
@@ -333,17 +337,17 @@
             <!-- ТОЧКА 1 -->
             <div class="checkpoint" id="cp1" style="top: 27%; left: 24.5%;" onclick="clickCheckpoint(1)"></div>
             <div class="click-me-hint" id="hint1" style="top: 27%; left: 24.5%;">Жми сюда ✨</div>
-            <div class="tooltip" id="tip1"><b>01.04 • День знакомства ⚡</b><br>Я тогда даже подумать не мог, что в этот ничем не примечательный день встречу человека, который станет для меня настолько важным...</div>
+            <div class="tooltip" id="tip1"><b>01.04 • День знакомства ⚡</b><br><br>Я тогда даже подумать не мог, что в этот ничем не примечательный день встречу человека, который станет для меня настолько важным...</div>
 
             <!-- ТОЧКА 2 -->
             <div class="checkpoint" id="cp2" style="top: 83%; left: 50%;" onclick="clickCheckpoint(2)"></div>
             <div class="click-me-hint" id="hint2" style="top: 83%; left: 50%;">Жми сюда ✨</div>
-            <div class="tooltip" id="tip2"><b>07.06 • Начало нас ❤️</b><br>Помнишь, как неуверенно я ответил «да» на вопрос про любовь? Я тогда дико стеснялся, хотя внутри уже точно знал, что влюбился по уши.</div>
+            <div class="tooltip" id="tip2"><b>07.06 • Начало нас ❤️</b><br><br>Помнишь, как неуверенно я ответил «да» на вопрос про любовь? Я тогда дико стеснялся, хотя внутри уже точно знал, что влюбился по уши.</div>
 
             <!-- ТОЧКА 3 -->
             <div class="checkpoint" id="cp3" style="top: 27%; left: 75.5%;" onclick="clickCheckpoint(3)"></div>
             <div class="click-me-hint" id="hint3" style="top: 27%; left: 75.5%;">Жми сюда ✨</div>
-            <div class="tooltip" id="tip3"><b>15.07 • День X 🏁</b><br>Дата, когда всё интернетное останется позади. День нашей самой первой настоящей встречи... Готова?</div>
+            <div class="tooltip" id="tip3"><b>15.07 • День X 🏁</b><br><br>Дата, когда всё интернетное останется позаели. День нашей самой पहली настоящей встречи... Готова?</div>
 
             <svg viewBox="0 0 500 500">
                 <path class="heart-path" id="heart-line" d="M250,120 C170,10 30,70 30,190 C30,310 150,400 250,470 C350,400 470,310 470,190 C470,70 330,10 250,120 Z"/>
@@ -431,7 +435,6 @@
             const currentTip = document.getElementById('tip' + id);
             currentTip.classList.add('active');
             
-            // Увеличено до 9000мс (9 секунд) на прочтение текста
             setTimeout(() => {
                 currentTip.classList.remove('active');
                 
